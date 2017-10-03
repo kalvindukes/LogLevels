@@ -42,10 +42,12 @@ end
 function getHelp()
     local availableOptions = ''
     for levelName, logLevel in pairs(levels) do
-      if availableOptions == '' then
-        availableOptions = levelName
-      else
-        availableOptions = availableOptions..'/'..levelName
+      if type(levelName) ~= "number" then
+        if availableOptions == '' then
+            availableOptions = levelName
+        else
+            availableOptions = availableOptions..'/'..levelName
+        end
       end
     end
     return "Sets the console level, use: /consolelevel ["..availableOptions.."]"
